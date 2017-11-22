@@ -3,19 +3,18 @@ package com.lance.demo.framework.discovery;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.consul.config.ConsulConfigProperties;
 import org.springframework.cloud.consul.discovery.ConsulDiscoveryProperties;
-
-//@ConfigurationProperties(prefix = DiscoveryConstants.DISCOVERY_PREFIX)
+@ConfigurationProperties(prefix = DiscoveryConstants.DISCOVERY_PREFIX)
 public class DiscoveryProperties{
 
     private ConsulConfigProperties config;
 
     private ConsulDiscoveryProperties discovery;
 
-    private String host;
+    private String host = "localhost";
 
-    private int port;
+    private int port = 8500;
 
-    private boolean enabled;
+    private boolean enabled = true;
 
     public ConsulConfigProperties getConfig() {
         return config;

@@ -15,7 +15,10 @@
     <module>demo-microservice-pay</module>
     <module>demo-microservice-auth</module>
     <module>demo-microservice-discovery</module>
-    <!--<module>demo-microservice-apidoc</module>-->
+    <module>demo-microservice-framework</module>
+    <module>demo-microservice-apidoc</module>
+    <module>demo-microservice-tracing</module>
+    <module>demo-microservice-gateway</module>
   </modules>
   <packaging>pom</packaging>
 

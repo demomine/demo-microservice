@@ -1,0 +1,108 @@
+spring.cloud.consul.config.acl-token = ${framework.consul.acl-token:aa}
+
+spring.cloud.consul.config.data-key = ${framework.consul.data-key:data}
+
+spring.cloud.consul.config.default-context = ${framework.consul.context:application}
+
+spring.cloud.consul.config.enabled = false
+
+spring.cloud.consul.config.fail-fast = true
+
+spring.cloud.consul.config.format = properties
+
+spring.cloud.consul.config.prefix = application
+
+spring.cloud.consul.config.profile-separator = :
+
+#spring.cloud.consul.config.watch.delay
+
+#spring.cloud.consul.config.watch.enabled
+
+#spring.cloud.consul.config.watch.wait-time
+
+spring.cloud.consul.discovery.acl-token = ${framework.consul.acl-token:aa}
+
+#spring.cloud.consul.discovery.catalog-services-watch-delay
+
+#spring.cloud.consul.discovery.catalog-services-watch-timeout
+
+spring.cloud.consul.discovery.default-query-tag = ${tag}
+
+#spring.cloud.consul.discovery.default-zone-metadata-name
+
+spring.cloud.consul.discovery.enabled = false
+
+spring.cloud.consul.discovery.fail-fast = true
+
+spring.cloud.consul.discovery.health-check-interval = ${framework.health-check-interval:5}
+
+spring.cloud.consul.discovery.health-check-path = ${framework.health-check-path:/health}
+
+spring.cloud.consul.discovery.health-check-timeout = ${framework.health-check-timeout:10}
+
+#spring.cloud.consul.discovery.health-check-url
+
+spring.cloud.consul.discovery.heartbeat.enabled = true
+
+#spring.cloud.consul.discovery.heartbeat.heartbeat-interval
+
+#spring.cloud.consul.discovery.heartbeat.interval-ratio
+
+#spring.cloud.consul.discovery.heartbeat.ttl-unit
+
+#spring.cloud.consul.discovery.heartbeat.ttl-value
+
+#spring.cloud.consul.discovery.host-info
+
+spring.cloud.consul.discovery.hostname = ${framework.consul.hostname:localhost}
+
+spring.cloud.consul.discovery.port = ${framework.consul.port:8500}
+
+spring.cloud.consul.discovery.instance-id = ${application.name}
+
+#spring.cloud.consul.discovery.instance-zone
+
+#spring.cloud.consul.discovery.ip-address
+
+spring.cloud.consul.discovery.lifecycle.enabled = true
+
+spring.cloud.consul.discovery.management-port = ${framework.consul.port:8500}
+
+#spring.cloud.consul.discovery.management-suffix
+
+#spring.cloud.consul.discovery.management-tags
+
+
+
+#spring.cloud.consul.discovery.prefer-agent-address
+
+#spring.cloud.consul.discovery.prefer-ip-address
+
+#spring.cloud.consul.discovery.query-passing
+
+spring.cloud.consul.discovery.register = false
+
+#spring.cloud.consul.discovery.register-health-check
+
+spring.cloud.consul.discovery.scheme = http
+
+#spring.cloud.consul.discovery.server-list-query-tags
+
+spring.cloud.consul.discovery.service-name  =  ${application.name}
+
+spring.cloud.consul.discovery.tags = ${tag}
+
+#spring.cloud.consul.enabled = ${framework.consul.enabled:true}
+spring.cloud.consul.enabled = false
+
+spring.cloud.consul.host =  ${framework.consul.hostname:localhost}
+
+spring.cloud.consul.port = ${framework.consul.port:8500}
+
+spring.cloud.consul.retry.initial-interval = 3
+
+spring.cloud.consul.retry.max-attempts = 5
+
+spring.cloud.consul.retry.max-interval = 10
+
+#spring.cloud.consul.retry.multiplier =
