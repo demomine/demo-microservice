@@ -6,19 +6,11 @@
     <artifactId>demo-microservice</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
-  <!--<parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.0.0.M3</version>
-  </parent>-->
 
   <artifactId>demo-microservice-framework</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
 
   <dependencies>
     <dependency>
@@ -43,6 +35,11 @@
       <artifactId>demo-microservice-discovery</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
+  <!--  <dependency>
+      <groupId>com.lance.demo</groupId>
+      <artifactId>demo-microservice-tracing</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>-->
   </dependencies>
 
   <dependencyManagement>
@@ -88,6 +85,13 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <version>1.5.4.RELEASE</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>build-info</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>

@@ -20,13 +20,17 @@
     <module>demo-microservice-apidoc</module>
     <module>demo-microservice-tracing</module>
     <module>demo-microservice-gateway</module>
+    <module>demo-microservice-api</module>
+    <module>demo-microservice-server</module>
   </modules>
   <packaging>pom</packaging>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <springfox.version>2.7.0</springfox.version>
-
+    <spring-boot.version>2.0.0.M3</spring-boot.version>
+    <spring-boot-admin.version>2.0.0-SNAPSHOT</spring-boot-admin.version>
+    <zipkin.version>2.3.1</zipkin.version>
   </properties>
 
   <dependencies>
@@ -61,6 +65,55 @@
         <version>${springfox.version}</version>
       </dependency>
       <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-starter-client</artifactId>
+        <version>${spring-boot-admin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-server</artifactId>
+        <version>${spring-boot-admin.version}</version>
+      </dependency>
+     <!-- <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-server-ui</artifactId>
+        <version>${spring-boot-admin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-server-ui-hystrix</artifactId>
+        <version>${spring-boot-admin.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-server-ui-turbine</artifactId>
+        <version>${spring-boot-admin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-server-ui-activiti</artifactId>
+        <version>${spring-boot-admin.version}</version>
+      </dependency>-->
+      <dependency>
+        <groupId>io.zipkin.java</groupId>
+        <artifactId>zipkin-server</artifactId>
+        <version>${zipkin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.zipkin.java</groupId>
+        <artifactId>zipkin-autoconfigure-ui</artifactId>
+        <version>${zipkin.version}</version>
+        <scope>runtime</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>io.zipkin.java</groupId>
+        <artifactId>zipkin</artifactId>
+        <version>2.3.1</version>
+      </dependency>
+
+      <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-dependencies</artifactId>
         <version>Finchley.M2</version>
@@ -85,4 +138,5 @@
       <url>https://jcenter.bintray.com/</url>
     </repository>
   </repositories>
+
 </project>

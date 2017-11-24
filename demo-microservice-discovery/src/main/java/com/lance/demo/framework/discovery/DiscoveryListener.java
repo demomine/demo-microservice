@@ -1,15 +1,11 @@
 package com.lance.demo.framework.discovery;
 
-import com.lance.demo.framework.discovery.DiscoveryConstants;
 import org.springframework.boot.context.event.ApplicationEnvironmentPreparedEvent;
-import org.springframework.cloud.bootstrap.BootstrapApplicationListener;
 import org.springframework.context.ApplicationListener;
 import org.springframework.core.Ordered;
 import org.springframework.core.env.*;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
-import org.springframework.util.ResourceUtils;
 
 import java.io.IOException;
 import java.util.*;
@@ -18,7 +14,6 @@ public class DiscoveryListener implements ApplicationListener<ApplicationEnviron
     private static final int DEFAULT_ORDER = Ordered.HIGHEST_PRECEDENCE + 4;
     @Override
     public void onApplicationEvent(ApplicationEnvironmentPreparedEvent event) {
-
         ConfigurableEnvironment environment = event.getEnvironment();
         processSystemProperties(environment);
         changeBootstrapProperties(environment);

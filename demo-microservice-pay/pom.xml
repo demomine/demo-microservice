@@ -8,21 +8,21 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>demo-microservice-pay</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>demo-microservice-pay</name>
     <url>http://maven.apache.org</url>
+    <modules>
+        <module>demo-microservice-pay-server</module>
+        <module>demo-microservice-pay-common</module>
+        <module>demo-microservice-pay-api</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
-        </dependency>
+       
     </dependencies>
 </project>

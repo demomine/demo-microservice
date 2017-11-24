@@ -2,35 +2,49 @@ package com.lance.demo.framework;
 
 import com.google.common.base.Preconditions;
 import com.lance.demo.framework.discovery.DiscoveryListener;
-import org.apache.commons.lang.StringUtils;
+// import com.lance.demo.microservice.tracing.TracingListener;
 import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.ApplicationContext;
+import org.springframework.util.StringUtils;
+
 import javax.validation.constraints.NotNull;
 
 @SpringBootApplication
 @EnableDiscoveryClient
+@EnableFeignClients(basePackages = "com.lance.demo")
 public class Bootstrap {
+    static {
+        System.setProperty("swagger", "true");
+    }
     public static ApplicationContext run(@NotNull Class clazz, String[] args) {
         preCheck();
         return new SpringApplicationBuilder(clazz,Bootstrap.class)
                 .bannerMode(Banner.Mode.OFF)
-                .listeners(new DiscoveryListener())
+                .listeners(new DiscoveryListener()/*,new TracingListener()*/)
                 .registerShutdownHook(true)
                 .run(args);
     }
 
     private static void preCheck() {
-        Preconditions.checkArgument(StringUtils.isNotBlank(System.getProperty(FrameworkConstants.ENV_TAG)), "please re-run application with env [-Dtag]");
-        String property = System.getProperty(FrameworkConstants.ENV_TAG);
-        if (property.equalsIgnoreCase(FrameworkConstants.LOCAL_MODE)) {
-            System.setProperty(FrameworkConstants.Consul.CONFIG_ENABLED, "false");
-            // System.setProperty("spring.cloud.discovery.config.enabled", "false");
+        // process tag = local
+        Preconditions.checkArgument(StringUtils.hasText(System.getProperty(FrameworkConstants.ENV_TAG)), "please re-run application with env [-Dtag]");
+        String tag = System.getProperty(FrameworkConstants.ENV_TAG);
+        if (tag.equalsIgnoreCase(FrameworkConstants.LOCAL_MODE)) {
+            System.setProperty(FrameworkConstants.Consul.CONFIG_ENABLED, Boolean.FALSE.toString());
         }
-        /*if (System.getProperty(FrameworkConstants.BOOTSTRAP_LOCATION) == null) {
-            System.setProperty(FrameworkConstants.BOOTSTRAP_LOCATION, "classpath:discovery.properties");
-        }*/
+        System.setProperty(FrameworkConstants.Consul.DISCOVERY_TAGS, System.getProperty(FrameworkConstants.ENV_TAG));
+        System.setProperty(FrameworkConstants.Consul.DISCOVERY_QUERY_TAGS, System.getProperty(FrameworkConstants.ENV_TAG));
+
+
+        //process monitor=disable
+        String monitoring = System.getProperty(FrameworkConstants.MONITORING);
+        if (StringUtils.hasText(monitoring) && monitoring.equalsIgnoreCase(FrameworkConstants.NO_MONITOR_MODE)) {
+            System.setProperty(FrameworkConstants.Monitor.ENABLED, Boolean.FALSE.toString());
+        }
+
     }
 }
