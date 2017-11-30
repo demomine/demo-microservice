@@ -13,6 +13,7 @@
     <modules>
         <module>demo-microservice-loan-server</module>
         <module>demo-microservice-loan-common</module>
+        <module>demo-microservice-loan-dao</module>
     </modules>
 
     <properties>
@@ -21,4 +22,80 @@
 
     <dependencies>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+
+                <configuration>
+                    <dataSource>
+                        <driverName>com.mysql.jdbc.Driver</driverName>
+                        <url>jdbc:mysql://192.168.1.72:3306/credit_loan?useUnicode=true&amp;useSSL=false</url>
+                        <username>root</username>
+                        <password>xb-12345</password>
+                    </dataSource>
+                    <packageInfo>
+                        <!-- 父级包名称，如果不写，下面的service等就需要写全包名(默认com.baomidou) -->
+                        <parent>com.lance.demo.microservice.loan</parent>
+                        <!--service包名(默认service)-->
+                        <service>dao</service>
+                        <!--serviceImpl包名(默认service.impl)-->
+                        <serviceImpl>dao.impl</serviceImpl>
+                        <!--entity包名(默认entity)-->
+                        <entity>entity</entity>
+                        <!--mapper包名(默认mapper)-->
+                        <mapper>mapper</mapper>
+                        <!--xml包名(默认mapper.xml)-->
+                        <xml>mapper.xml</xml>
+                    </packageInfo>
+                    <!-- 输出目录(默认java.io.tmpdir) -->
+                    <outputDir>/Users/perdonare/Documents/project/git/demo/demo-microservice/demo-microservice-loan/demo-microservice-loan-dao/src/main/java</outputDir>
+                    <!-- 是否覆盖同名文件(默认false) -->
+                    <fileOverride>true</fileOverride>
+                    <!-- mapper.xml 中添加二级缓存配置(默认true) -->
+                    <enableCache>false</enableCache>
+                    <!-- 是否开启 ActiveRecord 模式(默认true) -->
+                    <activeRecord>false</activeRecord>
+                    <!-- 数据源配置，( **必配** ) -->
+
+                    <strategy>
+                        <!-- 字段生成策略，四种类型，从名称就能看出来含义：
+                            nochange(默认),
+                            underline_to_camel,(下划线转驼峰)
+                            remove_prefix,(去除第一个下划线的前部分，后面保持不变)
+                            remove_prefix_and_camel(去除第一个下划线的前部分，后面转驼峰) -->
+                        <naming>underline_to_camel</naming>
+                        <!-- 表前缀 -->
+                        <!--Entity中的ID生成策略（默认 id_worker）-->
+                        <idGenType>uuid</idGenType>
+                        <!--自定义超类-->
+                        <!--<superServiceClass>com.baomidou.base.BaseService</superServiceClass>-->
+                        <!-- 要包含的表 与exclude 二选一配置-->
+                        <include>
+                            <property>t_credit_loan</property>
+                        </include>
+                        <!-- 要排除的表 -->
+                        <!--<exclude>-->
+                        <!--<property>schema_version</property>-->
+                        <!--</exclude>-->
+                    </strategy>
+
+                    <template>
+                        <!-- 定义controller模板的路径 -->
+                        <!--<controller>/template/controller1.java.vm</controller>-->
+                    </template>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.version}</version>
+                    </dependency>
+                </dependencies>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatisplus-maven-plugin</artifactId>
+                <version>1.0</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>

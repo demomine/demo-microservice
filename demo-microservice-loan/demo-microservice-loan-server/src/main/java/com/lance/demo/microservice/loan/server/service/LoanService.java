@@ -2,6 +2,8 @@ package com.lance.demo.microservice.loan.server.service;
 
 import com.lance.demo.microservice.loan.common.model.LoanReq;
 import com.lance.demo.microservice.loan.common.model.LoanRsp;
+import com.lance.demo.microservice.loan.dao.CreditLoanManager;
+import com.lance.demo.microservice.loan.entity.CreditLoanPO;
 import com.lance.demo.microservice.pay.api.PayApiClient;
 import com.lance.demo.microservice.pay.common.model.PayReq;
 import com.lance.demo.microservice.pay.common.model.PayRsp;
@@ -9,11 +11,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
+import java.util.Map;
+
 @Service
 @Slf4j
 public class LoanService {
     @Autowired
+    private CreditLoanManager creditLoanManager;
+    @Autowired
     private PayApiClient payApiClient;
+
     public LoanRsp pay(LoanReq loanReq) {
         PayReq payReq = new PayReq();
         payReq.setPayAmount(loanReq.getLoanAmount());
@@ -23,6 +31,13 @@ public class LoanService {
         loanRsp.setCode(payRsp.getCode());
         loanRsp.setMessage(payRsp.getMessage());
         loanRsp.setStatus(payRsp.getStatus());
+        return loanRsp;
+    }
+
+    public LoanRsp getLoanUser(@Valid String  id) {
+        CreditLoanPO creditLoanPO = creditLoanManager.selectById(id);
+        LoanRsp loanRsp = new LoanRsp();
+        loanRsp.setName(creditLoanPO.getContractName());
         return loanRsp;
     }
 }

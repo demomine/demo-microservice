@@ -14,7 +14,16 @@ public interface FrameworkConstants {
         String DISCOVERY_QUERY_TAGS = "spring.cloud.consul.discovery.default-query-tag";
     }
 
+    interface Zipkin {
+        String ENABLED = "spring.zipkin.enabled";
+    }
+
     interface Monitor {
         String ENABLED = "spring.boot.admin.client.enabled";
+    }
+
+    interface Bus {
+        String ENABLED = "spring.cloud.bus.enabled";
+
     }
 }

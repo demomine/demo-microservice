@@ -22,6 +22,9 @@
     <module>demo-microservice-gateway</module>
     <module>demo-microservice-api</module>
     <module>demo-microservice-server</module>
+    <module>demo-microservice-utils</module>
+    <module>demo-microservice-utils</module>
+    <module>demo-microservice-dao</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -31,6 +34,10 @@
     <spring-boot.version>2.0.0.M3</spring-boot.version>
     <spring-boot-admin.version>2.0.0-SNAPSHOT</spring-boot-admin.version>
     <zipkin.version>2.3.1</zipkin.version>
+    <spring-mybatis.version>2.0.0-SNAPSHOT</spring-mybatis.version>
+    <mybatis-plus.version>2.1.6</mybatis-plus.version>
+    <spring-mybatis-plus.version>1.0.5</spring-mybatis-plus.version>
+    <druid.version>1.1.5</druid.version>
   </properties>
 
   <dependencies>
@@ -96,6 +103,10 @@
         <version>${spring-boot-admin.version}</version>
       </dependency>-->
       <dependency>
+        <groupId>io.micrometer</groupId>
+        <artifactId>micrometer-registry-prometheus</artifactId>
+      </dependency>
+      <dependency>
         <groupId>io.zipkin.java</groupId>
         <artifactId>zipkin-server</artifactId>
         <version>${zipkin.version}</version>
@@ -107,13 +118,47 @@
         <scope>runtime</scope>
       </dependency>
 
-      <dependency>
-        <groupId>io.zipkin.java</groupId>
-        <artifactId>zipkin</artifactId>
-        <version>2.3.1</version>
-      </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${spring-mybatis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter-test</artifactId>
+            <version>${spring-mybatis.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+            <version>${mybatis-plus.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatisplus-spring-boot-starter</artifactId>
+            <version>${spring-mybatis-plus.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.0.5.Final</version>
+        </dependency>
 
-      <dependency>
+
+
+
+        <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-dependencies</artifactId>
         <version>Finchley.M2</version>

@@ -3,6 +3,7 @@ package com.lance.demo.framework;
 import com.google.common.base.Preconditions;
 import com.lance.demo.framework.discovery.DiscoveryListener;
 // import com.lance.demo.microservice.tracing.TracingListener;
+import com.lance.demo.microservice.tracing.TracingListener;
 import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -17,14 +18,11 @@ import javax.validation.constraints.NotNull;
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages = "com.lance.demo")
 public class Bootstrap {
-    static {
-        System.setProperty("swagger", "true");
-    }
     public static ApplicationContext run(@NotNull Class clazz, String[] args) {
         preCheck();
         return new SpringApplicationBuilder(clazz,Bootstrap.class)
                 .bannerMode(Banner.Mode.OFF)
-                .listeners(new DiscoveryListener()/*,new TracingListener()*/)
+                .listeners(new DiscoveryListener(),new TracingListener())
                 .registerShutdownHook(true)
                 .run(args);
     }
@@ -35,6 +33,9 @@ public class Bootstrap {
         String tag = System.getProperty(FrameworkConstants.ENV_TAG);
         if (tag.equalsIgnoreCase(FrameworkConstants.LOCAL_MODE)) {
             System.setProperty(FrameworkConstants.Consul.CONFIG_ENABLED, Boolean.FALSE.toString());
+            System.setProperty(FrameworkConstants.Zipkin.ENABLED, Boolean.FALSE.toString());
+            System.setProperty(FrameworkConstants.Zipkin.ENABLED, Boolean.FALSE.toString());
+            System.setProperty(FrameworkConstants.Bus.ENABLED, Boolean.FALSE.toString());
         }
         System.setProperty(FrameworkConstants.Consul.DISCOVERY_TAGS, System.getProperty(FrameworkConstants.ENV_TAG));
         System.setProperty(FrameworkConstants.Consul.DISCOVERY_QUERY_TAGS, System.getProperty(FrameworkConstants.ENV_TAG));
