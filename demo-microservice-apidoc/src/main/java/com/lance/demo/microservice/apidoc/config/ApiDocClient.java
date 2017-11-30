@@ -125,8 +125,7 @@ public class ApiDocClient {
         public Builder() {
             this.paths = PathSelectors.any();
             this.pathMapping = "/";
-            // this.handlerPredicate = RequestHandlerSelectors.withClassAnnotation(Api.class);
-            this.handlerPredicate = RequestHandlerSelectors.any();
+             this.handlerPredicate = RequestHandlerSelectors.withClassAnnotation(Api.class);
             this.jsonEditor = false;
             this.requestTimeout = 60000L;
             this.tittle = "demo-title";

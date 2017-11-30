@@ -14,9 +14,8 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
+      <groupId>com.lance.demo</groupId>
       <artifactId>demo-microservice-apidoc</artifactId>
-      <version>1.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -41,12 +40,10 @@
     <dependency>
       <groupId>com.lance.demo</groupId>
       <artifactId>demo-microservice-discovery</artifactId>
-      <version>1.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.lance.demo</groupId>
       <artifactId>demo-microservice-tracing</artifactId>
-      <version>1.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
 

@@ -7,7 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>demp-microservice-server</artifactId>
+    <artifactId>demo-microservice-server</artifactId>
     <packaging>jar</packaging>
 
     <properties>

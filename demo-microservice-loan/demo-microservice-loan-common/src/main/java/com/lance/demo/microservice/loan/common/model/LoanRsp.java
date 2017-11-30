@@ -11,6 +11,9 @@ import lombok.ToString;
 @ToString(callSuper = true)
 @Data
 public class LoanRsp extends CommonRsp {
+    LoanRsp(String status) {
+        super(status);
+    }
     @ApiModelProperty(name = "姓名")
     private String name;
 
