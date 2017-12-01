@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.lance.demo.microservice.common.CommonRsp;
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -12,7 +13,4 @@ import lombok.ToString;
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @ApiModel("支付响应")
 public class PayRsp extends CommonRsp {
-    PayRsp(String status) {
-        super(status);
-    }
 }

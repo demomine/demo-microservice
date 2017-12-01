@@ -35,17 +35,17 @@ public class LoanController {
     @GetMapping("/bus")
     public CommonRsp bus() {
         String status = environment.getProperty("loan.status");
-        return new CommonRsp(status);
+        return new CommonRsp();
     }
 
     @GetMapping("/bus_props")
     public CommonRsp busProps() {
-        return new CommonRsp(loanProperties.getStatus());
+        return new CommonRsp();
     }
 
     @GetMapping("/bus_value")
     public CommonRsp busValue() {
-        return new CommonRsp(status);
+        return new CommonRsp();
     }
 
    /* @EventListener

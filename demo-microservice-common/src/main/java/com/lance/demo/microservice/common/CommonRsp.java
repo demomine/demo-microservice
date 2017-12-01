@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @Data
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @NoArgsConstructor
-@AllArgsConstructor
 public class CommonRsp {
     @ApiModelProperty("状态")
     private String status;
@@ -20,11 +19,6 @@ public class CommonRsp {
 
     @ApiModelProperty("消息")
     private String message;
-
-
-    public CommonRsp(String status) {
-        this.status = status;
-    }
 
 
 }
