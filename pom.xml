@@ -29,6 +29,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <javax-validation.version>2.0.0.Final</javax-validation.version>
+    <hibernate-validation.version>6.0.5.Final</hibernate-validation.version>
     <springfox.version>2.7.0</springfox.version>
     <spring-boot.version>2.0.0.M7</spring-boot.version>
     <spring-boot-admin.version>2.0.0-SNAPSHOT</spring-boot-admin.version>
@@ -36,7 +38,7 @@
     <spring-mybatis.version>2.0.0-SNAPSHOT</spring-mybatis.version>
     <mybatis-plus.version>2.1.6</mybatis-plus.version>
     <spring-mybatis-plus.version>1.0.5</spring-mybatis-plus.version>
-    <druid.version>1.1.5</druid.version>
+    <spring-druid.version>1.1.6</spring-druid.version>
   </properties>
 
   <dependencies>
@@ -187,11 +189,7 @@
             <version>${spring-mybatis.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>${druid.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus</artifactId>
@@ -203,25 +201,27 @@
             <version>${spring-mybatis-plus.version}</version>
         </dependency>
         <dependency>
+          <groupId>com.alibaba</groupId>
+          <artifactId>druid-spring-boot-starter</artifactId>
+          <version>${spring-druid.version}</version>
+        </dependency>
+        <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-            <version>2.0.0.Final</version>
+            <version>${javax-validation.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>6.0.5.Final</version>
+            <version>${hibernate-validation.version}</version>
         </dependency>
 
-
-
-
         <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-dependencies</artifactId>
-        <version>Finchley.M5</version>
-        <type>pom</type>
-        <scope>import</scope>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-dependencies</artifactId>
+          <version>Finchley.M5</version>
+          <type>pom</type>
+          <scope>import</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>

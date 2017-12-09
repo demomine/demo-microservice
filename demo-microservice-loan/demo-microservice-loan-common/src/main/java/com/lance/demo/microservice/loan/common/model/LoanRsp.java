@@ -5,11 +5,13 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.lance.demo.microservice.common.CommonRsp;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @ToString(callSuper = true)
-@Data
+@Getter@Setter
 public class LoanRsp extends CommonRsp {
 
     @ApiModelProperty(name = "姓名")
