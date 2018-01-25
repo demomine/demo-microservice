@@ -30,7 +30,7 @@ public class ApiDocProperties {
         private String description ="demo-lance-description";
         private String termsOfServiceUrl = "http://www.immerser.net";
         private String license ="Lance License Version 1.0";
-        private String liscenseUrl ="https://github.com/demomine";
+        private String lisenseUrl ="https://github.com/demomine";
         private String version = "1.0";
 
     }

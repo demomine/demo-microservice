@@ -5,11 +5,9 @@ import com.lance.demo.microservice.pay.common.model.PayRsp;
 import com.lance.demo.microservice.server.service.PayService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @RestController
@@ -22,5 +20,13 @@ public class PayController {
     @PostMapping("/pay")
     public PayRsp pay(@RequestBody @Valid PayReq payReq) {
         return payService.pay(payReq);
+    }
+
+    @GetMapping("/pay")
+    public PayRsp pay(HttpServletResponse response) {
+        String correlationId = response.getHeader("X-Trace-Correlation-Id");
+        PayRsp payRsp = new PayRsp();
+        payRsp.setMessage(correlationId);
+        return payRsp;
     }
 }
