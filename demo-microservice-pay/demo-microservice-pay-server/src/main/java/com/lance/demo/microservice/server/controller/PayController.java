@@ -24,9 +24,6 @@ public class PayController {
 
     @GetMapping("/pay")
     public PayRsp pay(HttpServletResponse response) {
-        String correlationId = response.getHeader("X-Trace-Correlation-Id");
-        PayRsp payRsp = new PayRsp();
-        payRsp.setMessage(correlationId);
-        return payRsp;
+        return payService.pay("hello world");
     }
 }

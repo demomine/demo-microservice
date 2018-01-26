@@ -4,11 +4,16 @@ import com.google.common.base.Preconditions;
 import com.lance.demo.framework.discovery.DiscoveryListener;
 // import com.lance.demo.microservice.tracing.TracingListener;
 //import com.lance.demo.microservice.tracing.TracingListener;
+import com.lance.demo.microservice.tracing.TracingListener;
 import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
+import org.springframework.cloud.netflix.turbine.EnableTurbine;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScans;
@@ -19,12 +24,15 @@ import javax.validation.constraints.NotNull;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages = "com.lance.demo")
+@EnableHystrixDashboard
+@EnableCircuitBreaker
+@EnableTurbine
 public class Bootstrap {
     public static ApplicationContext run(@NotNull Class clazz, String[] args) {
         preCheck();
         return new SpringApplicationBuilder(clazz,Bootstrap.class)
                 .bannerMode(Banner.Mode.OFF)
-                .listeners(new DiscoveryListener()/*,new TracingListener()*/)
+                .listeners(new DiscoveryListener(),new TracingListener())
                 .registerShutdownHook(true)
                 .run(args);
     }

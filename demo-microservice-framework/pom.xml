@@ -41,10 +41,10 @@
       <groupId>com.lance.demo</groupId>
       <artifactId>demo-microservice-discovery</artifactId>
     </dependency>
-    <!--<dependency>-->
-      <!--<groupId>com.lance.demo</groupId>-->
-      <!--<artifactId>demo-microservice-tracing</artifactId>-->
-    <!--</dependency>-->
+    <dependency>
+      <groupId>com.lance.demo</groupId>
+      <artifactId>demo-microservice-tracing</artifactId>
+    </dependency>
   </dependencies>
 
   <!--<dependencyManagement>-->

@@ -7,6 +7,7 @@ import com.lance.demo.microservice.loan.entity.CreditLoanPO;
 import com.lance.demo.microservice.pay.api.PayApiClient;
 import com.lance.demo.microservice.pay.common.model.PayReq;
 import com.lance.demo.microservice.pay.common.model.PayRsp;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,11 @@ public class LoanService {
     private CreditLoanManager creditLoanManager;
     @Autowired
     private PayApiClient payApiClient;
-
+    @HystrixCommand(fallbackMethod = "fail")
     public LoanRsp pay(LoanReq loanReq) {
+        if (Math.random() > 0.7) {
+            throw new RuntimeException();
+        }
         PayReq payReq = new PayReq();
         payReq.setPayAmount(loanReq.getLoanAmount());
         payReq.setPayeeNo(loanReq.getContractNo());
@@ -31,6 +35,10 @@ public class LoanService {
         loanRsp.setMessage(payRsp.getMessage());
         loanRsp.setStatus(payRsp.getStatus());
         return loanRsp;
+    }
+
+    public LoanRsp fail(LoanReq loanReq) {
+        return null;
     }
 
     public LoanRsp getLoanUser(@Valid String  id) {

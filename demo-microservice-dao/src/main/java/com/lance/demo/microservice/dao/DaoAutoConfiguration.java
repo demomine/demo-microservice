@@ -1,6 +1,6 @@
 package com.lance.demo.microservice.dao;
 
-import com.alibaba.druid.support.spring.stat.DruidStatInterceptor;
+//import com.alibaba.druid.support.spring.stat.DruidStatInterceptor;
 import com.baomidou.mybatisplus.plugins.OptimisticLockerInterceptor;
 import com.baomidou.mybatisplus.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.plugins.PerformanceInterceptor;
@@ -62,9 +62,9 @@ public class DaoAutoConfiguration {
                 daoAutoConfigProperties.getRefresh().getSleep(), daoAutoConfigProperties.getRefresh().isEnabled());
     }
 
-    @Bean
-    @ConditionalOnProperty(value = "framework.dao.monitor.enabled" ,havingValue = "true")
-    public DruidStatInterceptor druidStatInterceptor() {
-        return new DruidStatInterceptor();
-    }
+//    @Bean
+//    @ConditionalOnProperty(value = "framework.dao.monitor.enabled" ,havingValue = "true")
+//    public DruidStatInterceptor druidStatInterceptor() {
+//        return new DruidStatInterceptor();
+//    }
 }

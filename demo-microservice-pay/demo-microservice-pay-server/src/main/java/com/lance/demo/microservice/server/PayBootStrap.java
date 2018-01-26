@@ -1,6 +1,7 @@
 package com.lance.demo.microservice.server;
 
 import com.lance.demo.framework.Bootstrap;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.context.annotation.ComponentScan;
 
 @ComponentScan
