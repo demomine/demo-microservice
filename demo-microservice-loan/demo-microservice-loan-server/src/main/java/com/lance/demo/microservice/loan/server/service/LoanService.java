@@ -38,7 +38,7 @@ public class LoanService {
     }
 
     public LoanRsp fail(LoanReq loanReq) {
-        return null;
+        return new LoanRsp("fail name");
     }
 
     public LoanRsp getLoanUser(@Valid String  id) {
