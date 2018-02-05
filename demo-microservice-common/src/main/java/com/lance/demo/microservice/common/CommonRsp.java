@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CommonRsp {
     @ApiModelProperty("状态")
-    private String status;
+    private int status;
 
     @ApiModelProperty("编码")
     private String code;
@@ -20,5 +20,19 @@ public class CommonRsp {
     @ApiModelProperty("消息")
     private String message;
 
+    public CommonRsp(int status) {
+        this.status = status;
+    }
 
+    public CommonRsp(String code, String message) {
+        this.status = 500;
+        this.code = code;
+        this.message = message;
+    }
+
+    public CommonRsp(int status, String code, String message) {
+        this.status = status;
+        this.code = code;
+        this.message = message;
+    }
 }

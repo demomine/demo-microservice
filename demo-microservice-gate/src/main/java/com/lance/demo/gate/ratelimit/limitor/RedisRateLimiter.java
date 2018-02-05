@@ -27,7 +27,6 @@ public class RedisRateLimiter implements RateLimiter {
 
         calcRemainingLimit(policy.getLimit(), refreshInterval, requestTime, key, rate);
         calcRemainingQuota(quota, refreshInterval, requestTime, key, rate);
-
         return rate;
     }
 
