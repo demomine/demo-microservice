@@ -13,7 +13,7 @@ public class PayService {
         log.info("req :{}",payReq);
         PayRsp payRsp = new PayRsp();
         payRsp.setCode("0000");
-        payRsp.setStatus("SUCCESS");
+        payRsp.setStatus(200);
         return payRsp;
     }
 
@@ -24,7 +24,7 @@ public class PayService {
         }
         log.info("=================   request value:{}",value);
         PayRsp payRsp = new PayRsp();
-        payRsp.setStatus("success");
+        payRsp.setStatus(200);
         payRsp.setMessage(value);
         return payRsp;
     }
@@ -33,7 +33,7 @@ public class PayService {
     public PayRsp payFallback(String value) {
         log.error("==============pay fail");
         PayRsp payRsp = new PayRsp();
-        payRsp.setStatus("fail");
+        payRsp.setStatus(200);
         payRsp.setMessage(value);
         return payRsp;
     }

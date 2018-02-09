@@ -27,7 +27,7 @@ public class JsonUtils {
         return mapper.copy();
     }
 
-    public String toJson(Object o) {
+    public static String toJson(Object o) {
         try {
             return mapper.writeValueAsString(o);
         } catch (JsonProcessingException e) {
@@ -35,7 +35,7 @@ public class JsonUtils {
         }
     }
 
-    public <T> T toBean(String json,Class<T> type) {
+    public static  <T> T toBean(String json,Class<T> type) {
         try {
             return mapper.readValue(json, type);
         } catch (IOException e) {
@@ -43,7 +43,7 @@ public class JsonUtils {
         }
     }
 
-    public <T> T toBean(String json, TypeReference<T> type) {
+    public static  <T> T toBean(String json, TypeReference<T> type) {
         try {
             return mapper.readValue(json, type);
         } catch (IOException e) {
