@@ -17,30 +17,24 @@
         <dependency>
             <groupId>com.lance.demo</groupId>
             <artifactId>demo-microservice-framework</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zipkin</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.zipkin.java</groupId>
-            <artifactId>zipkin-autoconfigure-ui</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.zipkin.java</groupId>
-            <artifactId>zipkin-server</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
-
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-server</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
         <!--<dependency>-->
             <!--<groupId>de.codecentric</groupId>-->
             <!--<artifactId>spring-boot-admin-server-ui-activiti</artifactId>-->

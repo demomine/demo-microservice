@@ -17,7 +17,7 @@ import javax.validation.Valid;
 @Service
 @Slf4j
 public class LoanService {
-    @Autowired
+    //@Autowired
     private CreditLoanManager creditLoanManager;
     @Autowired
     private PayApiClient payApiClient;

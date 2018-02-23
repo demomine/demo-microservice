@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.plugins.PerformanceInterceptor;
 import com.baomidou.mybatisplus.plugins.SqlExplainInterceptor;
 import com.baomidou.mybatisplus.spring.MybatisMapperRefresh;
 import com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean;
-import com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusAutoConfiguration;
+//import com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusAutoConfiguration;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
@@ -18,7 +18,7 @@ import org.springframework.context.annotation.*;
 
 @Configuration
 @EnableConfigurationProperties(DaoAutoConfigProperties.class)
-@AutoConfigureAfter(MybatisPlusAutoConfiguration.class)
+//@AutoConfigureAfter(MybatisPlusAutoConfiguration.class)
 @ConditionalOnClass({SqlSessionFactory.class, MybatisSqlSessionFactoryBean.class})
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class DaoAutoConfiguration {

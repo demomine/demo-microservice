@@ -11,7 +11,6 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-
   <dependencies>
     <dependency>
       <groupId>com.lance.demo</groupId>
@@ -55,44 +54,29 @@
     </dependency>
   </dependencies>
 
-  <repositories>
-    <repository>
-      <id>spring-milestones</id>
-      <name>Spring Milestones</name>
-      <url>https://repo.spring.io/libs-milestone</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-    <repository>
-      <id>jcenter-snapshots</id>
-      <name>jcenter</name>
-      <url>https://jcenter.bintray.com/</url>
-    </repository>
-  </repositories>
-
   <build>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.2</version>
+        <version>${maven-compiler-plugin}</version>
         <configuration>
           <source>${java.version}</source>
           <target>${java.version}</target>
         </configuration>
       </plugin>
+
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <version>1.5.4.RELEASE</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>build-info</goal>
-            </goals>
-          </execution>
-        </executions>
+        <version>1.5.10.RELEASE</version>
+        <!--<executions>-->
+          <!--<execution>-->
+            <!--<goals>-->
+              <!--<goal>repackage</goal>-->
+            <!--</goals>-->
+          <!--</execution>-->
+        <!--</executions>-->
       </plugin>
     </plugins>
   </build>

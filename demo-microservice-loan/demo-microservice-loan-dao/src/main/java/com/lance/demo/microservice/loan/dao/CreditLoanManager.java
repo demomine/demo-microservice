@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
  * @author author
  * @since 2017-12-01
  */
-@Service
+//@Service
 public class CreditLoanManager extends ServiceImpl<CreditLoanMapper, CreditLoanPO> implements IService<CreditLoanPO> {
 	
 }

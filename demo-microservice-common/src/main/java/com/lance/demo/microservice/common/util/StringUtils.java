@@ -216,7 +216,6 @@ public class StringUtils {
         set.or(BitSet.valueOf(new long[]{uid}));
         return set.toLongArray()[0];
     }
-
     public static long longUid(String... args) {
         StringBuilder buf = new StringBuilder(System.currentTimeMillis() - START_DATE.getTime() + "");
         if (buf.length() <= 12 && buf.toString().compareTo("922337203684") <= 0) {

@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.0.0.M7</version>
+    <version>2.0.0.RC1</version>
   </parent>
   <groupId>com.lance.demo</groupId>
   <artifactId>demo-microservice</artifactId>
@@ -28,17 +28,33 @@
   <packaging>pom</packaging>
 
   <properties>
+    <java.version>1.8</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven-compiler-plugin>3.7.0</maven-compiler-plugin>
+    <spring-boot-maven-plugin>1.5.10.RELEASE</spring-boot-maven-plugin>
+    <spring-cloud.version>Finchley.M6</spring-cloud.version>
     <javax-validation.version>2.0.0.Final</javax-validation.version>
     <hibernate-validation.version>6.0.5.Final</hibernate-validation.version>
     <springfox.version>2.7.0</springfox.version>
-    <spring-boot.version>2.0.0.M7</spring-boot.version>
+    <spring-boot.version>2.0.0.RC1</spring-boot.version>
     <spring-boot-admin.version>2.0.0-SNAPSHOT</spring-boot-admin.version>
+    <micrometer-prometheus.version>1.0.0-rc.5</micrometer-prometheus.version>
     <zipkin.version>2.4.5</zipkin.version>
+    <guava.version>24.0-jre</guava.version>
+    <javax.validation.version>2.0.1.Final</javax.validation.version>
     <spring-mybatis.version>2.0.0-SNAPSHOT</spring-mybatis.version>
     <mybatis-plus.version>2.1.6</mybatis-plus.version>
     <spring-mybatis-plus.version>1.0.5</spring-mybatis-plus.version>
-    <spring-druid.version>1.1.6</spring-druid.version>
+    <spring-druid.version>1.1.8</spring-druid.version>
+    <commons-io.version>2.6</commons-io.version>
+    <commons-lang3.version>3.7</commons-lang3.version>
+    <commons-codec.version>1.11</commons-codec.version>
+    <astyanax-core.version>3.8.0</astyanax-core.version>
+    <commons-beanutils.version>1.9.3</commons-beanutils.version>
+    <commons-collections4.version>4.1</commons-collections4.version>
+    <commons-net.version>3.6</commons-net.version>
+    <json-path.version>2.4.0</json-path.version>
+    <druid-spring.version>1.1.8</druid-spring.version>
   </properties>
 
   <dependencies>
@@ -56,64 +72,83 @@
   </dependencies>
 
   <dependencyManagement>
+
     <dependencies>
       <dependency>
         <groupId>com.lance.demo</groupId>
         <artifactId>demo-microservice-loan</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.lance.demo</groupId>
         <artifactId>demo-microservice-repay</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.lance.demo</groupId>
         <artifactId>demo-microservice-pay</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.lance.demo</groupId>
         <artifactId>demo-microservice-api</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.lance.demo</groupId>
         <artifactId>demo-microservice-common</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.lance.demo</groupId>
         <artifactId>demo-microservice-apidoc</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${project.version}</version>
       </dependency>
-
-
-
       <dependency>
         <groupId>com.lance.demo</groupId>
         <artifactId>demo-microservice-auth</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.lance.demo</groupId>
         <artifactId>demo-microservice-dao</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.lance.demo</groupId>
         <artifactId>demo-microservice-discovery</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.lance.demo</groupId>
+        <artifactId>demo-microservice-framework</artifactId>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.lance.demo</groupId>
         <artifactId>demo-microservice-server</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.lance.demo</groupId>
         <artifactId>demo-microservice-tracing</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>${guava.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.micrometer</groupId>
+        <artifactId>micrometer-registry-prometheus</artifactId>
+        <version>${micrometer-prometheus.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.validation</groupId>
+        <artifactId>validation-api</artifactId>
+        <version>${javax.validation.version}</version>
       </dependency>
 
       <dependency>
@@ -161,22 +196,57 @@
         <artifactId>spring-boot-admin-server-ui-login</artifactId>
         <version>${spring-boot-admin.version}</version>
       </dependency>
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${commons-io.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>${commons-lang3.version}</version>
+      </dependency>
 
       <dependency>
-        <groupId>io.micrometer</groupId>
-        <artifactId>micrometer-registry-prometheus</artifactId>
+        <groupId>commons-codec</groupId>
+        <artifactId>commons-codec</artifactId>
+        <version>${commons-codec.version}</version>
       </dependency>
       <dependency>
-        <groupId>io.zipkin.java</groupId>
-        <artifactId>zipkin-server</artifactId>
-        <version>${zipkin.version}</version>
+        <groupId>com.netflix.astyanax</groupId>
+        <artifactId>astyanax-core</artifactId>
+        <version>${astyanax-core.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.apache.cassandra</groupId>
+            <artifactId>cassandra-all</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
-        <groupId>io.zipkin.java</groupId>
-        <artifactId>zipkin-autoconfigure-ui</artifactId>
-        <version>${zipkin.version}</version>
-        <scope>runtime</scope>
+        <groupId>commons-beanutils</groupId>
+        <artifactId>commons-beanutils</artifactId>
+        <version>${commons-beanutils.version}</version>
       </dependency>
+
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-collections4</artifactId>
+        <version>${commons-collections4.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>commons-net</groupId>
+        <artifactId>commons-net</artifactId>
+        <version>${commons-net.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.jayway.jsonpath</groupId>
+        <artifactId>json-path</artifactId>
+        <version>${json-path.version}</version>
+      </dependency>
+
 
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -204,11 +274,6 @@
           <groupId>com.alibaba</groupId>
           <artifactId>druid-spring-boot-starter</artifactId>
           <version>${spring-druid.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>${javax-validation.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
