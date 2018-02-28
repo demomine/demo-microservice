@@ -9,6 +9,8 @@ import org.slf4j.MDC;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 
+import java.util.Arrays;
+
 @Aspect
 @Configuration
 @Order
@@ -26,7 +28,7 @@ public class LogInterceptor {
             if (args != null && args.length > 0) {
                 receive.append(PREFIX).append(": ");
                 for (int i = 0; i < args.length; i++) {
-                    if (contains(bizLog.excludes(), args[i].getClass().getSimpleName())) {
+                    if (Arrays.asList(bizLog.excludes()).contains(args[i].getClass().getSimpleName())) {
                         continue;
                     }
                     if (bizLog.argMsg().length > i) {
