@@ -24,6 +24,7 @@ import javax.validation.constraints.NotNull;
 @EnableHystrixDashboard
 @EnableCircuitBreaker
 @EnableTurbine
+
 public class Bootstrap {
     public static ApplicationContext run(@NotNull Class clazz, String[] args) {
         preCheck();
@@ -47,7 +48,6 @@ public class Bootstrap {
         }
         System.setProperty(FrameworkConstants.Consul.DISCOVERY_TAGS, System.getProperty(FrameworkConstants.ENV_TAG));
         System.setProperty(FrameworkConstants.Consul.DISCOVERY_QUERY_TAGS, System.getProperty(FrameworkConstants.ENV_TAG));
-
 
         //process monitor=disable
         String monitoring = System.getProperty(FrameworkConstants.MONITORING);
